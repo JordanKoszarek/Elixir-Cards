@@ -22,8 +22,15 @@ defmodule Cards do
   end
 
   def save(deck, filename) do
-    binary = :erland.term_to_binary(deck)
+    binary = :erlang.term_to_binary(deck)
     File.write(filename, binary);
+  end
+
+  def load(file_name) do
+    case File.read(file_name) do
+      {:ok, binary} -> :erlang.binary_to_term(binary)
+      {:error, reason} -> "File does not exits"
+    end
   end
 
 end
