@@ -21,8 +21,9 @@ defmodule Cards do
     Enum.split(deck, hand_size)
   end
 
-
-
-
+  def save(deck, filename) do
+    binary = :erland.term_to_binary(deck)
+    File.write(filename, binary);
+  end
 
 end
